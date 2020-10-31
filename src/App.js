@@ -5,18 +5,27 @@ import React, { Component } from 'react';
 
 class App extends Component {
   constructor() {
-    super();
+    super();    
+
+    this.state = this.getInitialState();
+    this.reset = this.reset.bind(this);
+    this.handleCellClick = this.handleCellClick.bind(this);
+  }
+
+  getInitialState() {
     var values = new Array(3);
     for (var i = 0; i < values.length; ++i) {
       values[i] = new Array(3);
     }
-
-    this.state = {
+    return {
       nextClick: "X",
       values: values,
       winner: null
     };
-    this.handleCellClick = this.handleCellClick.bind(this);
+  }
+
+  reset() {
+    this.setState(this.getInitialState());
   }
 
   handleCellClick(x, y) {
@@ -100,6 +109,7 @@ class App extends Component {
       <div className="result">
         Winner is {this.state.winner}
       </div>
+      <button onClick={this.reset}>Reset</button>
     </div>
   )};
 }
