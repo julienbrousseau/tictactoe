@@ -14,7 +14,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <div className={("cell cell" + this.props.value)} onClick={this.cellClicked}></div>
+            <div className={("cell cell" + this.props.value + " " + this.props.winnerClass)} onClick={this.cellClicked}></div>
         );
     }
 }
