@@ -1,3 +1,9 @@
+:root {
+  --electricBlue: 205, 100%, 86%;
+  --electricBlueGlow: 0px 0px 20px 0px hsla(var(--electricBlue), 0.5),
+      inset 0px 0px 20px 0px hsla(var(--electricBlue), 0.5);
+}
+
 body {
   background-color: #282c34;
   display: flex;
@@ -14,7 +20,7 @@ body {
 }
 button {
   background-color:  hsl(205, 100%, 15%);
-  color:  hsl(205, 100%, 86%);
+  color:  hsla(var(--electricBlue), 1);
   outline: 0;
   border-width:0px;
   border-radius: 5px;
@@ -23,62 +29,47 @@ button {
   font-family: inherit;
   font-size:1rem;
 }
+
 .cell {
   border:1px solid #666;
   position: relative;
 }
-.cellX::before {
-  content:' ';
+.cell::before, .cell::after {
   position: absolute;
-  border:4px solid hsla(205, 100%, 86%, 1);
-  width:40px;
-  border-radius: 24px;
-  height: 180px;
-  transform:rotate(-45deg);
-  box-shadow: 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5),
-    inset 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5)
-  ;
-  top:00px;
-  left:75px;
-  animation: slideXIn 0.25s, tiltXLeft 0.25s ease 0.25s;
-
+  content: ' ';
 }
-.cellX::after {
-  content:' ';
-  position: absolute;
+.cellX::before, .cellX::after {
   width:40px;
   border-radius: 24px;
   height: 180px;
-  transform:rotate(45deg);
-  border:4px solid hsla(205, 100%, 86%, 1);
-  box-shadow: 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5),
-    inset 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5)
-  ;
+  border:4px solid hsla(var(--electricBlue), 1);
+  box-shadow: var(--electricBlueGlow);
   top:00px;
   left:75px;
+}
+.cellX::before {
+  transform:rotate(-45deg);
+  animation: slideXIn 0.25s, tiltXLeft 0.25s ease 0.25s;
+}
+
+.cellX::after {
+  transform:rotate(45deg);
   animation: slideXIn 0.25s, tiltXRight 0.25s ease 0.25s;
 }
+
 .cellO::before {
-  content: ' ';
-  position:absolute;
   width: 160px;
   height: 160px;
   border-radius:82px;
-  border:4px solid hsla(205, 100%, 86%, 1);
-  box-shadow: 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5),
-    inset 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5)
-  ;
+  border:4px solid hsla(var(--electricBlue), 1);
+  box-shadow: var(--electricBlueGlow);
   left:15px;
   top:15px;
   animation: largeCircleGlow 0.25s;
 }
 .cellO::after {
-  content: ' ';
-  position:absolute;
-  border:4px solid hsla(205, 100%, 86%, 1);
-  box-shadow: 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5),
-    inset 0px 0px 20px 0px hsla(205, 100%, 86%, 0.5)
-  ;
+  border:4px solid hsla(var(--electricBlue), 1);
+  box-shadow: var(--electricBlueGlow);
   width: 120px;
   height: 120px;
   border-radius:62px;
@@ -87,40 +78,12 @@ button {
   animation: smallCircleGlow 0.25s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 @keyframes slideXIn {
   from {
