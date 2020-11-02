@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Cell from './Cell';
 import React, { Component } from 'react';
