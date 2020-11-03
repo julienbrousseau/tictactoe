@@ -1,5 +1,6 @@
 import './App.css';
 import Cell from './Cell';
+import Credits from './Credits';
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -112,8 +113,8 @@ class App extends Component {
 
   render() {
     return (
-    <div>
-      <div className="App">
+    <div className="container">
+      <div className="gameGrid">
         <Cell posX={0} posY={0} value={this.state.values[0][0]} winnerClass={this.state.winners[0][0]} onClick={this.handleCellClick} />
         <Cell posX={1} posY={0} value={this.state.values[1][0]} winnerClass={this.state.winners[1][0]} onClick={this.handleCellClick} />
         <Cell posX={2} posY={0} value={this.state.values[2][0]} winnerClass={this.state.winners[2][0]} onClick={this.handleCellClick} />
@@ -124,7 +125,8 @@ class App extends Component {
         <Cell posX={1} posY={2} value={this.state.values[1][2]} winnerClass={this.state.winners[1][2]} onClick={this.handleCellClick} />
         <Cell posX={2} posY={2} value={this.state.values[2][2]} winnerClass={this.state.winners[2][2]} onClick={this.handleCellClick} />
       </div>
-      <button onClick={this.reset}>Reset</button>
+      <button onClick={this.reset}>Restart</button>
+      <Credits />
     </div>
   )};
 }
