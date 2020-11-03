@@ -1,0 +1,9 @@
+a.creditLink, a.creditLink:visited {
+    color: #666;
+    text-decoration: none;
+    margin-top: 2rem;
+}
+a.creditLink:hover {
+    color: #888;
+    text-decoration: underline;
+}
