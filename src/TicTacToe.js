@@ -3,7 +3,7 @@ import Cell from './Cell';
 import Credits from './Credits';
 import React, { Component } from 'react';
 
-class App extends Component {
+class TicTacToe extends Component {
   constructor() {
     super();    
 
@@ -131,4 +131,4 @@ class App extends Component {
   )};
 }
 
-export default App;
+export default TicTacToe;
