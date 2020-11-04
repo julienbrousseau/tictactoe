@@ -1,7 +1,10 @@
 :root {
   --mainColor: 205, 100%, 86%;
-  --mainColorGlow: 0px 0px 20px 0px hsla(var(--mainColor), 0.5),
-      inset 0px 0px 20px 0px hsla(var(--mainColor), 0.5);
+  --mainColorGlow: 0px 0px 10px 0px hsla(var(--mainColor), 0.5),
+      inset 0px 0px 10px 0px hsla(var(--mainColor), 0.5);
+  --xCornersRadius: 14px;
+  --oSmallRadius: 37.5px;
+  --oLargeRadius: 49px;
 }
 
 body {
@@ -35,12 +38,16 @@ body {
   cursor:pointer;
 }
 
+
 .gameGrid {
-  margin-top: 50px;
   text-align: center;
   display: grid;
-  grid-template-columns: 200px 200px 200px;
-  grid-template-rows: 200px 200px 200px;
+}
+
+.gameGrid {
+  margin-top: 20px;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px;
 }
 
 .cell {
@@ -54,14 +61,18 @@ body {
   position: absolute;
   content: ' ';
 }
+.cellX::before, .cellX::after, .cellO::before, .cellO::after {
+  border-width:2px;
+  border-style: solid; 
+  border-color:hsla(var(--mainColor), 1);
+}
 .cellX::before, .cellX::after {
-  width:40px;
-  border-radius: 24px;
-  height: 180px;
-  border:4px solid hsla(var(--mainColor), 1);
+  width:20%;
+  border-radius: var(--xCornersRadius);
+  height: 90%;
   box-shadow: var(--mainColorGlow);
   top:00px;
-  left:75px;
+  left:37.5%;
 }
 .cellX::before {
   transform:rotate(-45deg);
@@ -74,60 +85,77 @@ body {
 }
 
 .cellO::before {
-  width: 160px;
-  height: 160px;
-  border-radius:82px;
-  border:4px solid hsla(var(--mainColor), 1);
+  width: 80%;
+  height: 80%;
+  border-radius:var(--oLargeRadius);
   box-shadow: var(--mainColorGlow);
-  left:15px;
-  top:15px;
+  left:7.5%;
+  top:7.5%;
   animation: largeCircleGlow 0.25s;
 }
 .cellO::after {
-  border:4px solid hsla(var(--mainColor), 1);
   box-shadow: var(--mainColorGlow);
-  width: 120px;
-  height: 120px;
-  border-radius:62px;
-  left:35px;
-  top:35px;
+  width: 60%;
+  height: 60%;
+  border-radius:var(--oSmallRadius);
+  left:17.5%;
+  top:17.5%;
   animation: smallCircleGlow 0.25s;
 }
+
+@media (min-width: 600px) {
+  .gameGrid {
+    margin-top: 50px;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+  }
+  :root {
+    --xCornersRadius: 24px;
+    --oSmallRadius: 62px;
+    --oLargeRadius: 82px;
+    --mainColorGlow: 0px 0px 20px 0px hsla(var(--mainColor), 0.5),
+        inset 0px 0px 20px 0px hsla(var(--mainColor), 0.5);
+  }
+  .cellX::before, .cellX::after, .cellO::before, .cellO::after {
+    border-width: 4px;
+  }
+}
+
 
 @keyframes slideXIn {
   from {
     transform:rotate(0deg);
-    height:40px;
-    top:70px;
+    height:20%;
+    top:35%;
   }
   to {
     transform:rotate(0deg);
-    height:160px;
-    top:10px;
+    height:80%;
+    top:5%;
   }
 }
 @keyframes tiltXLeft {
   from {
     transform:rotate(0deg);
-    height:160px;
-    top:10px;
+    height:80%;
+    top:5%;
   }
   to {
     transform:rotate(-45deg);
-    height:180px;
-    top:0px;
+    height:90%;
+    top:0%;
   }
 }
 @keyframes tiltXRight {
   from {
     transform:rotate(0deg);
-    height:160px;
-    top:10px;
+    height:80%;
+    top:5%;
   }
   to {
     transform:rotate(45deg);
-    height:180px;
-    top:00px;
+    height:90%;
+    top:0%;
   }
 }
 @keyframes largeCircleGlow {
@@ -135,15 +163,15 @@ body {
     height: 0px;
     width: 0px;
     border-radius: 0px;
-    left:100px;
-    top:100px;
+    left:50%;
+    top:50%;
   }
   to {
-    width: 160px;
-    height: 160px;
-    border-radius:82px;
-    left:15px;
-    top:15px;
+    width: 80%;
+    height: 80%;
+    border-radius:var(--oLargeRadius);
+    left:7.5%;
+    top:7.5%;
   }
 }
 @keyframes smallCircleGlow {
@@ -151,14 +179,14 @@ body {
     height: 0px;
     width: 0px;
     border-radius: 0px;
-    left:100px;
-    top:100px;
+    left:50%;
+    top:50%;
   }
   to {
-    width: 120px;
-    height: 120px;
-    border-radius:62px;
-    left:35px;
-    top:35px;
+    width: 60%;
+    height: 60%;
+    border-radius:var(--oSmallRadius);
+    left:17.5%;
+    top:17.5%;
   }
 }
