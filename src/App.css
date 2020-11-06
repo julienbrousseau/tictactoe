@@ -9,6 +9,7 @@
 
 body {
   background-color: #282c34;
+  min-width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -46,8 +47,8 @@ body {
 
 .gameGrid {
   margin-top: 20px;
-  grid-template-columns: 120px 120px 120px;
-  grid-template-rows: 120px 120px 120px;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
 }
 
 .cell {
